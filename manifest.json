@@ -1,0 +1,57 @@
+{
+  "manifest_version": 3,
+  "name": "Web Guide",
+  "version": "1.0.2",
+  "description": "Your virtual tour guide for the web. Summarizes pages, guides navigation, and helps users find their way - making the web accessible for everyone.",
+  "author": "Web Guide Team",
+  
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "Web Guide - Your Virtual Tour Guide"
+  },
+  
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "exclude_matches": [
+        "https://chrome.google.com/webstore/*",
+        "https://microsoftedge.microsoft.com/addons/*"
+      ],
+      "js": ["config.js", "content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/*", "config.js", "content.js", "content.css"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  
+  "background": {
+    "service_worker": "background.js"
+  }
+}

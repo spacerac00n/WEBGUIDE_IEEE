@@ -1,0 +1,246 @@
+/**
+ * Web Guide Extension - Content Styles
+ * 
+ * Visual guidance system styles:
+ * - Element highlights
+ * - Pointing arrows
+ * - Tooltips
+ * - Animations
+ * 
+ * All styles use high z-index and !important to ensure visibility
+ */
+
+/* ============================================
+   HIGHLIGHT STYLES
+   ============================================ */
+
+.webguide-highlight {
+    border: 6px solid #4f6bff !important;
+    border-radius: 12px !important;
+    background: rgba(79, 107, 255, 0.48) !important;
+    box-shadow: 
+        0 0 0 12px rgba(79, 107, 255, 0.7),
+        0 0 72px rgba(79, 107, 255, 1),
+        inset 0 0 40px rgba(79, 107, 255, 0.5) !important;
+    animation: webguide-pulse 2s ease-in-out infinite !important;
+    transition: all 0.3s ease !important;
+}
+
+.webguide-highlight.scan-target {
+    border-color: #ff8a00 !important;
+    background: rgba(255, 138, 0, 0.45) !important;
+    box-shadow:
+        0 0 0 12px rgba(255, 138, 0, 0.65),
+        0 0 70px rgba(255, 138, 0, 0.95),
+        inset 0 0 36px rgba(255, 138, 0, 0.5) !important;
+}
+
+@keyframes webguide-pulse {
+    0%, 100% {
+        box-shadow: 
+            0 0 0 4px rgba(102, 126, 234, 0.3),
+            0 0 20px rgba(102, 126, 234, 0.4),
+            inset 0 0 20px rgba(102, 126, 234, 0.1);
+    }
+    50% {
+        box-shadow: 
+            0 0 0 8px rgba(102, 126, 234, 0.2),
+            0 0 30px rgba(102, 126, 234, 0.5),
+            inset 0 0 30px rgba(102, 126, 234, 0.15);
+    }
+}
+
+/* ============================================
+   ARROW STYLES
+   ============================================ */
+
+.webguide-arrow {
+    animation: webguide-bounce 1s ease-in-out infinite !important;
+}
+
+.webguide-arrow svg {
+    filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.55)) !important;
+}
+
+.webguide-arrow path {
+    stroke: #4f6bff !important;
+    stroke-width: 10 !important;
+}
+
+.webguide-arrow.scan-target path {
+    stroke: #ff8a00 !important;
+}
+
+@keyframes webguide-bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(14px);
+    }
+}
+
+/* ============================================
+   TOOLTIP STYLES
+   ============================================ */
+
+.webguide-tooltip {
+    background: rgba(12, 18, 34, 0.95) !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    color: #ffffff !important;
+    padding: 12px 18px !important;
+    border-radius: 10px !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    max-width: 320px !important;
+    text-align: center !important;
+    box-shadow: 
+        0 8px 22px rgba(0, 0, 0, 0.45),
+        0 0 0 2px rgba(79, 107, 255, 0.18) !important;
+    animation: webguide-fadeIn 0.3s ease-out !important;
+}
+
+.webguide-tooltip::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: -8px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    border-left: 8px solid transparent !important;
+    border-right: 8px solid transparent !important;
+    border-top: 8px solid rgba(12, 18, 34, 0.95) !important;
+}
+
+@keyframes webguide-fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* ============================================
+   ANIMATED PATH STYLES (Future Feature)
+   ============================================ */
+
+.webguide-path-line {
+    position: fixed !important;
+    pointer-events: none !important;
+    z-index: 2147483645 !important;
+}
+
+.webguide-path-dot {
+    position: fixed !important;
+    width: 12px !important;
+    height: 12px !important;
+    background: #667eea !important;
+    border-radius: 50% !important;
+    pointer-events: none !important;
+    z-index: 2147483646 !important;
+    animation: webguide-dot-pulse 1.5s ease-in-out infinite !important;
+}
+
+@keyframes webguide-dot-pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 0.7;
+    }
+}
+
+/* ============================================
+   STEP INDICATOR (Future Feature)
+   ============================================ */
+
+.webguide-step-indicator {
+    position: fixed !important;
+    background: #667eea !important;
+    color: #fff !important;
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.5) !important;
+    pointer-events: none !important;
+    z-index: 2147483647 !important;
+}
+
+/* ============================================
+   ACCESSIBILITY FOCUS STYLES
+   ============================================ */
+
+.webguide-focus-visible {
+    outline: 3px solid #667eea !important;
+    outline-offset: 3px !important;
+}
+
+/* ============================================
+   DARK MODE SUPPORT
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+    .webguide-tooltip {
+        background: linear-gradient(135deg, #818cf8 0%, #a78bfa 100%) !important;
+    }
+    
+    .webguide-highlight {
+        border-color: #818cf8 !important;
+        background: rgba(129, 140, 248, 0.2) !important;
+        box-shadow: 
+            0 0 0 4px rgba(129, 140, 248, 0.3),
+            0 0 20px rgba(129, 140, 248, 0.4),
+            inset 0 0 20px rgba(129, 140, 248, 0.1) !important;
+    }
+    
+    .webguide-arrow path {
+        stroke: #818cf8 !important;
+    }
+}
+
+/* ============================================
+   REDUCED MOTION SUPPORT
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    .webguide-highlight,
+    .webguide-arrow,
+    .webguide-tooltip,
+    .webguide-path-dot {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* ============================================
+   HIGH CONTRAST MODE SUPPORT
+   ============================================ */
+
+@media (prefers-contrast: high) {
+    .webguide-highlight {
+        border-width: 4px !important;
+        border-color: #0000ff !important;
+    }
+    
+    .webguide-tooltip {
+        background: #000 !important;
+        border: 2px solid #fff !important;
+    }
+    
+    .webguide-arrow path {
+        stroke: #0000ff !important;
+        stroke-width: 5 !important;
+    }
+}
